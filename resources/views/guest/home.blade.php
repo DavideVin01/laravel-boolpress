@@ -17,7 +17,7 @@
 
 <body>
     <div>
-        {{-- @if (Route::has('login'))
+        @if (Route::has('login'))
             <div class="top-right links">
                 @auth
                     <a href="{{ url('/admin') }}">Home</a>
@@ -29,9 +29,11 @@
                     @endif
                 @endauth
             </div>
-        @endif --}}
+        @endif
 
-        <div id="root"></div>
+        Sito in costruzione
+        <div id="root">
+        </div>
 
     </div>
 </body>
