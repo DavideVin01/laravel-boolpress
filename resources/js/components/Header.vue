@@ -1,12 +1,13 @@
 <template>
-  <div class="card-header">{{ title }}</div>
+<header></header>
 </template>
 
 <script>
 export default {
   name: "Header",
+  props: ['title'],
 };
 </script>
 
-<style scoped>
+<style>
 </style>

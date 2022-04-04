@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware('auth')
-    ->prefix('admin')
-    ->name('admin.')
-    ->namespace('admin')
-    ->group(function () {
+Route::middleware('auth')->prefix('admin')->name('admin.')->namespace('admin')->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
 
         Route::resource('posts', 'PostController');
@@ -29,7 +25,5 @@ Route::middleware('auth')
 Route::get('{any?}', function () {
     return view('guest.home');
 })->where("any", ".*");
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

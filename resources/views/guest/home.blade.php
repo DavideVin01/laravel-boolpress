@@ -32,6 +32,7 @@
         @endif --}}
 
         <div id="root"></div>
+
     </div>
 </body>
 
