@@ -3,20 +3,24 @@
       <h2>Posts</h2>
       <Loader v-if="isLoading"/>
       <div v-else>
-        <ul v-if="posts.length">
-            <li v-for="post in posts" :key="post.id">{{post.title}}</li>
-        </ul>
-        <p v-else>Non ci sono post.</p>
+          <div v-if="posts.length">
+              <div v-for="post in posts" :key="post.id">
+            <PostCard :post="post" />
+              </div>
+          </div>
+          <p v-else>Non ci sono post.</p>
       </div>
   </section>
 </template>
 
 <script>
 import Loader from '../Loader.vue';
+import PostCard from './PostCard.vue';
 export default {
     name: "PostsList",
     components: {
         Loader,
+        PostCard,
     },
     data(){
         return{
@@ -43,6 +47,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    ul{
+        li {
+            list-style-type: none;
+            border: 1px solid black;
+        }
+    }
 </style>
