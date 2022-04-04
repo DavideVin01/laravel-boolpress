@@ -2183,16 +2183,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "App",
@@ -2214,6 +2204,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37727,12 +37738,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _vm._v(
-        "\n  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam nostrum odio, expedita, neque itaque eos perferendis architecto quia corporis quibusdam illo. Illum corrupti totam laudantium aspernatur. Minima delectus nam nulla.\n  Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, veniam ducimus magnam nihil sapiente repellendus blanditiis sunt nobis odio sequi adipisci ratione omnis dicta similique? Non nam cum atque quasi.\n  Est facere vel delectus maxime minus natus, iure, enim voluptates autem saepe voluptatibus earum temporibus, illum at nulla quia adipisci libero! Nisi, labore aliquam fuga quis vitae commodi. At, perspiciatis.\n  Eligendi cumque illum doloremque mollitia obcaecati rem alias ullam fugiat corrupti saepe adipisci explicabo veritatis itaque odit tempora voluptatibus, nostrum sit modi quis accusantium consequuntur delectus officia quidem quo. Earum.\n  Repellat quaerat provident assumenda magnam, facere tempore rem quae quis enim totam nemo unde deserunt itaque quia praesentium impedit iure fugiat. Ipsam facere voluptatem dignissimos temporibus tempore asperiores quia quam!\n  Exercitationem rem corporis optio quis, similique consequuntur expedita error, cumque tenetur eaque aspernatur iure saepe praesentium quidem dolores ex quae animi sapiente tempore, commodi et obcaecati. Cumque officia dicta ipsa.\n  Ut itaque eaque est autem rerum quidem illo maiores magni, eos repellat doloremque officia dolores mollitia laboriosam necessitatibus unde vitae pariatur sequi eligendi perspiciatis ratione vel ex voluptatum corporis. Neque.\n  Culpa fugiat alias repudiandae expedita aut natus, dignissimos consequuntur sed. Totam saepe necessitatibus perferendis reprehenderit quia! Temporibus, adipisci facilis. Praesentium consectetur enim neque tempore aspernatur consequuntur, nulla id natus ducimus.\n  Obcaecati a optio est dolore totam blanditiis nihil ullam repellat, excepturi perspiciatis nemo labore eius temporibus saepe, dolorem eaque? Odit eaque incidunt aspernatur hic sapiente ducimus, quibusdam porro quasi quo.\n  Necessitatibus unde, repudiandae modi repellat omnis earum. Fugiat nihil libero a, maxime dignissimos impedit cupiditate, amet minus doloremque, temporibus sequi illum nobis voluptatem praesentium! Error consectetur harum quos maiores quis.\n  Accusamus itaque quae dolore temporibus ut repellendus facere aut, ipsam quam eum maiores fugiat ad voluptate nemo amet, cumque culpa quisquam iusto, eius aperiam ea repudiandae eaque quaerat. Eos, molestias.\n  "
-      ),
-      _c("Header"),
-    ],
+    [_c("Header"), _vm._v(" "), _c("div", { staticClass: "container" })],
     1
   )
 }
@@ -37766,7 +37772,80 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [_c("ul", [_c("li", [_vm._v("Prova")])])])
+    return _c("header", [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "navbar navbar-expand-lg navbar-light bg-light shadow-sm",
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c(
+              "a",
+              {
+                staticClass: "navbar-brand d-flex align-items-center",
+                attrs: { href: "#" },
+              },
+              [
+                _c("img", {
+                  staticClass: "d-inline-block align-top img-fluid",
+                  attrs: {
+                    src: "https://www.freepngdesign.com/content/uploads/images/3d-letter-b-6679.png",
+                    width: "75",
+                    alt: "B",
+                  },
+                }),
+                _vm._v(" "),
+                _c("div", [_vm._v("Boolpress")]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "navbar-toggler",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "collapse",
+                  "data-target": "#navbarNav",
+                  "aria-controls": "navbarNav",
+                  "aria-expanded": "false",
+                  "aria-label": "Toggle navigation",
+                },
+              },
+              [_c("span", { staticClass: "navbar-toggler-icon" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbarNav" },
+              },
+              [
+                _c("ul", { staticClass: "navbar-nav" }, [
+                  _c("li", { staticClass: "nav-item active" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("Home "),
+                      _c("span", { staticClass: "sr-only" }, [
+                        _vm._v("(current)"),
+                      ]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "nav-item" }, [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v("Posts"),
+                    ]),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+        ]
+      ),
+    ])
   },
 ]
 render._withStripped = true
@@ -50025,9 +50104,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('App', __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue"));
 var root = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#root',
   render: function render(h) {
