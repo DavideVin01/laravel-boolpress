@@ -63,9 +63,9 @@
                 </div>
                 <div class="col-1 mt-1">
                     @if($post->image)
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->slug }}" width="65" height="60" id="preview">
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="Image Preview" width="65" height="60" id="preview">
                     @else
-                    <img src="https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg" alt="Preview" width="65" height="60" id="preview">
+                    <img src="https://marcolanci.it/utils/placeholder.jpg" alt="Preview" width="65" height="60" id="preview">
                     @endif
                 </div>
                 <div class="col-12 tags @error ('tags') is-invalid @enderror">
@@ -93,17 +93,17 @@
 
 @section('scripts')
     <script>
-        const placeholder = "https://banksiafdn.com/wp-content/uploads/2019/10/placeholde-image.jpg";
+        const placeholder = "https://marcolanci.it/utils/placeholder.jpg";
 
         const imageInput = document.getElementById('image');
         const imagePreview = document.getElementById('preview');
 
-        imageInput.addEventListener('change', e => {
+        imageInput.addEventListener('change', () => {
             if (imageInput.files && imageInput.files[0]){
                 let reader = new FileReader();
                 reader.readAsDataURL(imageInput.files[0]);
 
-                reader.onload = e => {
+                reader.onload = (e) => {
                     imagePreview.setAttribute('src', e.target.result);
                 }
             } else imagePreview.setAttribute('src', placeholder);

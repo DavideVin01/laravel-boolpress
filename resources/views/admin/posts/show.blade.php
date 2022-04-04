@@ -21,7 +21,11 @@
     <div class="row">
         <div class="col-4 mt-5">
             <div class="shadow">
+                @if($post->image)
                 <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}" alt="Image">
+                @else
+                <img class="img-fluid" src="https://marcolanci.it/utils/placeholder.jpg" alt="Image">
+                @endif
             </div>
             <div class="col-12 d-flex mt-5">
 
