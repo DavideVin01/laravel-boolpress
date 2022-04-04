@@ -2193,17 +2193,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     PostsList: _posts_PostsList_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
-  methods: {
-    getPosts: function getPosts() {
-      axios.get('http://127.0.0.1:8000/api/posts').then(function (res) {
-        $this.posts = res.data;
-      })["catch"](function (err) {
-        console.error(err);
-      }).then(function () {
-        console.log('Chiamata terminata');
-      });
-    }
   }
 });
 
@@ -2269,8 +2258,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "PostsList"
+  name: "PostsList",
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  methods: {
+    getPosts: function getPosts() {
+      var _this = this;
+
+      axios.get('http://127.0.0.1:8000/api/posts').then(function (res) {
+        _this.posts = res.data;
+      })["catch"](function (err) {
+        console.error(err);
+      }).then(function () {
+        console.log('Chiamata terminata');
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPosts();
+  }
 });
 
 /***/ }),
@@ -37985,7 +37999,17 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "m-4" }, [
-    _vm._v("\n    Lista dei Post\n"),
+    _c("h2", [_vm._v("Posts")]),
+    _vm._v(" "),
+    _vm.posts.length
+      ? _c(
+          "ul",
+          _vm._l(_vm.posts, function (post) {
+            return _c("li", { key: post.id }, [_vm._v(_vm._s(post.title))])
+          }),
+          0
+        )
+      : _c("p", [_vm._v("Non ci sono post.")]),
   ])
 }
 var staticRenderFns = []
