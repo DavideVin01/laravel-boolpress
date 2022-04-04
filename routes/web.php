@@ -16,18 +16,22 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware('auth')->prefix('admin')->name('admin.')->namespace('admin')->group(function () {
+Route::middleware('auth')
+->prefix('admin')
+->name('admin.')
+->namespace('admin')
+->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
 
         Route::resource('posts', 'PostController');
     });
 
-Route::get('{any?}', function () {
-    return view('guest.home');
-})->where("any", ".*");
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('{any?}', function () {
+        //     return view('guest.home');
+        // })->where("any", ".*");
+        
+        // Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/', function () {
+            return view('guest.home');
+        });

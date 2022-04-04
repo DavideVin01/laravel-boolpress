@@ -12,30 +12,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-    <script src="{{ asset('js/front.js') }}" defer></script>
+    <script src="{{ asset('js/front-end.js') }}" defer></script>
 </head>
 
 <body>
-    <div>
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/admin') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-        Sito in costruzione
-        <div id="root">
-        </div>
-
-    </div>
+    @section('content')
+    <example-component></example-component>
+@endsection
 </body>
 
 </html>

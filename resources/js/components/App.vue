@@ -1,18 +1,16 @@
 <template>
   <div>
-    <header>
-      Prova
-    </header>
-    <main>
-      Test
-    </main>
+    Prova
   </div>
 </template>
 
 <script>
 export default {
-  name: "App",
-}
+  name: 'App',
+  components: {
+    
+  },
+};
 </script>
 
 <style>
