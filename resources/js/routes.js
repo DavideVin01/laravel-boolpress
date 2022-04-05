@@ -1,11 +1,17 @@
-// import Vue from 'vue';
-// import VueRouter from 'vue-router';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-// Vue.use(VueRouter);
+Vue.use(VueRouter);
 
-// const router = new VueRouter(){
-//     mode: 'history',
-//     routes: [
-//         { path: '/', component: HomePage },
-//     ]
-// }
+import HomePage from './components/pages/HomePage.vue';
+import ContactPage from './components/pages/ContactPage.vue';
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        { path: '/', component: HomePage },
+        { path: '/contacts', component: ContactPage },
+    ]
+});
+
+export default router;
