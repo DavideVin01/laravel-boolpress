@@ -17,15 +17,18 @@
         <div class="d-flex">
           <div v-for="tag in post.tags" :key="tag.id">
             <span
-              class="badge shadow-sm px-2 mx-1 text-white"
+              class="badge shadow-sm px-2 mx-1 pt-1 text-white"
               :style="`background-color: ${tag.color}`"
               >{{ tag.label }}</span
             >
           </div>
         </div>
       </div>
-      <div v-else class="badge shadow-sm px-3 mx-1 text-white bg-secondary">
-        ---
+      <div
+        v-else
+        class="badge shadow-sm px-3 mx-1 pt-1 text-white bg-secondary"
+      >
+        Empty
       </div>
     </div>
   </div>

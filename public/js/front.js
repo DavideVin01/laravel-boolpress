@@ -2319,6 +2319,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostCard",
   props: ["post"],
@@ -38860,7 +38863,8 @@ var render = function () {
                     _c(
                       "span",
                       {
-                        staticClass: "badge shadow-sm px-2 mx-1 text-white",
+                        staticClass:
+                          "badge shadow-sm px-2 mx-1 pt-1 text-white",
                         style: "background-color: " + tag.color,
                       },
                       [_vm._v(_vm._s(tag.label))]
@@ -38874,9 +38878,9 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "badge shadow-sm px-3 mx-1 text-white bg-secondary",
+                  "badge shadow-sm px-3 mx-1 pt-1 text-white bg-secondary",
               },
-              [_vm._v("\n      ---\n    ")]
+              [_vm._v("\n      Empty\n    ")]
             ),
       ]
     ),
