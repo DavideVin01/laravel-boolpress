@@ -1,22 +1,25 @@
 <template>
   <div>
-    <Header />
-    <div class="container">
-      <PostsList />
+    <Header :title="title" />
+    <div class="mx-5">
+      <div class="m-4">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Header from "./Header.vue";
-import HomePage from "./pages/HomePage.vue";
-import PostsList from "./posts/PostsList.vue";
 export default {
   name: "App",
+  data() {
+    return {
+      title: "Boolpress",
+    };
+  },
   components: {
     Header,
-    PostsList,
-    HomePage,
   },
 };
 </script>

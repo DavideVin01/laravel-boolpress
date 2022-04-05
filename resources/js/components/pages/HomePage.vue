@@ -1,12 +1,16 @@
 <template>
-  <section id="home-page">
-    <h1>HomePage</h1>
+  <section id="home">
+    <PostsList />
   </section>
 </template>
 
 <script>
+import PostsList from "../posts/PostsList.vue";
 export default {
   name: "HomePage",
+  components: {
+    PostsList,
+  },
 };
 </script>
 

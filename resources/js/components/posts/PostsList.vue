@@ -1,5 +1,5 @@
 <template>
-  <section class="m-4">
+  <section>
     <h1>Posts</h1>
     <div class="my-3 d-flex justify-content-center">
       <Pagination
@@ -49,7 +49,7 @@ export default {
     getPosts(page = 1) {
       this.isLoading = true;
       axios
-        .get("http://127.0.0.1:8000/api/posts?page=" + page)
+        .get("http://localhost:8000/api/posts?page=" + page)
         .then((res) => {
           const { data, current_page, last_page } = res.data;
 

@@ -7,7 +7,7 @@
         v-if="pagination.currentPage > 1"
         @click="$emit('on-page-change', pagination.currentPage - 1)"
       >
-        <span class="page-link">Previous</span>
+        <span class="page-link"><i class="fas fa-angle-left"></i></span>
       </li>
       <li
         class="page-item"
@@ -25,7 +25,9 @@
         v-if="pagination.lastPage > pagination.currentPage"
         @click="$emit('on-page-change', pagination.currentPage + 1)"
       >
-        <span class="page-link" href="#">Next</span>
+        <span class="page-link" href="#"
+          ><i class="fas fa-angle-right"></i
+        ></span>
       </li>
     </ul>
   </nav>

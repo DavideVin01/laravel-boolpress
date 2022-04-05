@@ -1,11 +1,20 @@
 <template>
   <div class="card">
-    <div>
-      <h5 class="card-header">{{ post.author.name }} - {{ updatedAt }}</h5>
+    <div class="card-header d-flex justify-content-between">
+      <h5>{{ post.author.name }} - {{ updatedAt }}</h5>
+      <router-link
+        v-if="!hideLink"
+        :to="{ name: 'post-detail', params: { slug: post.slug } }"
+        class="btn btn-sm btn-primary"
+        ><i class="fas fa-eye"></i> Vedi</router-link
+      >
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
-      <p class="card-text">{{ post.content }}</p>
+      <div>
+        <img v-if="showImage && post.image" :src="post.image" alt="Image" />
+        <p class="card-text">{{ post.content }}</p>
+      </div>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
       <div
@@ -37,7 +46,7 @@
 <script>
 export default {
   name: "PostCard",
-  props: ["post"],
+  props: ["post", "hide-link", "show-image"],
   computed: {
     updatedAt() {
       let date = new Date(this.post.updated_at);
@@ -50,8 +59,8 @@ export default {
 
       if (day < 10) day = "0" + day;
       if (month < 10) month = "0" + month;
-      if (minute < 10) minute = "0" + minute;
-      if (seconds < 10) seconds = "0" + seconds;
+      // if (minute < 10) minute = "0" + minute;
+      // if (seconds < 10) seconds = "0" + seconds;
 
       return `${day}/${month}/${year} ${hour}:${minute}:${seconds}`;
     },
