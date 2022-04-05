@@ -38838,7 +38838,7 @@ var render = function () {
             class:
               "badge badge-pill badge-" +
               _vm.post.category.color +
-              " shadow-sm pt-1 text-uppercase px-3 mb-0",
+              " shadow-sm pt-1 text-uppercase px-5 mb-0",
           },
           [_vm._v("\n      " + _vm._s(_vm.post.category.label) + "\n    ")]
         ),
@@ -38851,7 +38851,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "badge shadow-sm px-2 mx-1",
+                  staticClass: "badge shadow-sm px-2 mx-1 text-white",
                   style: "background-color: " + tag.color,
                 },
                 [_vm._v(_vm._s(tag.label))]

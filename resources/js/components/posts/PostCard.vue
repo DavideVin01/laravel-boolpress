@@ -9,14 +9,14 @@
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
       <div
-        :class="`badge badge-pill badge-${post.category.color} shadow-sm pt-1 text-uppercase px-3 mb-0`"
+        :class="`badge badge-pill badge-${post.category.color} shadow-sm pt-1 text-uppercase px-5 mb-0`"
       >
         {{ post.category.label }}
       </div>
       <div class="d-flex">
         <div v-for="tag in post.tags" :key="tag.id">
           <span
-            class="badge shadow-sm px-2 mx-1"
+            class="badge shadow-sm px-2 mx-1 text-white"
             :style="`background-color: ${tag.color}`"
             >{{ tag.label }}</span
           >
