@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -16,6 +17,9 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+
+        $tag_ids = Tag::pluck('id')->toArray();
+
         $category_ids = Category::pluck('id')->toArray();
         for ($i = 0; $i < 50; $i++) {
             $post = new Post();
@@ -25,6 +29,13 @@ class PostSeeder extends Seeder
             // $post->image = $faker->imageUrl(250, 250);
             $post->slug = Str::slug($post->title, '-');
             $post->save();
+
+            $post_tags = [];
+            foreach ($tag_ids as $tag_id){
+                if ($faker->boolean()) $post_tags[] = $tag_id;
+            }
+
+            $post->tags()->attach($post_tags);
         }
     }
 }

@@ -2296,9 +2296,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'PostCard',
-  props: ['post'],
+  name: "PostCard",
+  props: ["post"],
   computed: {
     updatedAt: function updatedAt() {
       var date = new Date(this.post.updated_at);
@@ -2310,8 +2328,8 @@ __webpack_require__.r(__webpack_exports__);
       var seconds = date.getSeconds();
       if (day < 10) day = "0" + day;
       if (month < 10) month = "0" + month;
-      if (minute = '0') minute = "0" + minute;
-      if (seconds = '0') seconds = "0" + seconds;
+      if (minute < 10) minute = "0" + minute;
+      if (seconds < 10) seconds = "0" + seconds;
       return "".concat(day, "/").concat(month, "/").concat(year, " ").concat(hour, ":").concat(minute, ":").concat(seconds);
     }
   }
@@ -38797,13 +38815,53 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
-    _c("h5", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.updatedAt))]),
+    _c("div", [
+      _c("h5", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.updatedAt))]),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.post.title))]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.post.content))]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "card-footer d-flex justify-content-between align-items-center",
+      },
+      [
+        _c(
+          "div",
+          {
+            class:
+              "badge badge-pill badge-" +
+              _vm.post.category.color +
+              " shadow-sm pt-1 text-uppercase px-3 mb-0",
+          },
+          [_vm._v("\n      " + _vm._s(_vm.post.category.label) + "\n    ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "d-flex" },
+          _vm._l(_vm.post.tags, function (tag) {
+            return _c("div", { key: tag.id }, [
+              _c(
+                "span",
+                {
+                  staticClass: "badge shadow-sm px-2 mx-1",
+                  style: "background-color: " + tag.color,
+                },
+                [_vm._v(_vm._s(tag.label))]
+              ),
+            ])
+          }),
+          0
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
