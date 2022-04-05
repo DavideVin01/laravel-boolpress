@@ -2314,6 +2314,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostCard",
   props: ["post"],
@@ -38816,7 +38821,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
     _c("div", [
-      _c("h5", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.updatedAt))]),
+      _c("h5", { staticClass: "card-header" }, [
+        _vm._v(_vm._s(_vm.post.author.name) + " - " + _vm._s(_vm.updatedAt)),
+      ]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
@@ -38843,23 +38850,34 @@ var render = function () {
           [_vm._v("\n      " + _vm._s(_vm.post.category.label) + "\n    ")]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "d-flex" },
-          _vm._l(_vm.post.tags, function (tag) {
-            return _c("div", { key: tag.id }, [
+        _vm.post.tags.length
+          ? _c("div", [
               _c(
-                "span",
-                {
-                  staticClass: "badge shadow-sm px-2 mx-1 text-white",
-                  style: "background-color: " + tag.color,
-                },
-                [_vm._v(_vm._s(tag.label))]
+                "div",
+                { staticClass: "d-flex" },
+                _vm._l(_vm.post.tags, function (tag) {
+                  return _c("div", { key: tag.id }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "badge shadow-sm px-2 mx-1 text-white",
+                        style: "background-color: " + tag.color,
+                      },
+                      [_vm._v(_vm._s(tag.label))]
+                    ),
+                  ])
+                }),
+                0
               ),
             ])
-          }),
-          0
-        ),
+          : _c(
+              "div",
+              {
+                staticClass:
+                  "badge shadow-sm px-3 mx-1 text-white bg-secondary",
+              },
+              [_vm._v("\n      ---\n    ")]
+            ),
       ]
     ),
   ])

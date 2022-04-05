@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div>
-      <h5 class="card-header">{{ updatedAt }}</h5>
+      <h5 class="card-header">{{ post.author.name }} - {{ updatedAt }}</h5>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
@@ -13,14 +13,19 @@
       >
         {{ post.category.label }}
       </div>
-      <div class="d-flex">
-        <div v-for="tag in post.tags" :key="tag.id">
-          <span
-            class="badge shadow-sm px-2 mx-1 text-white"
-            :style="`background-color: ${tag.color}`"
-            >{{ tag.label }}</span
-          >
+      <div v-if="post.tags.length">
+        <div class="d-flex">
+          <div v-for="tag in post.tags" :key="tag.id">
+            <span
+              class="badge shadow-sm px-2 mx-1 text-white"
+              :style="`background-color: ${tag.color}`"
+              >{{ tag.label }}</span
+            >
+          </div>
         </div>
+      </div>
+      <div v-else class="badge shadow-sm px-3 mx-1 text-white bg-secondary">
+        ---
       </div>
     </div>
   </div>
