@@ -14,17 +14,20 @@ export default {
     props: ['post'],
     computed: {
         updatedAt(){
-            const date = new Date(this.post.updated_at);
+            let date = new Date(this.post.updated_at);
             let day = date.getDate();
             let month = date.getMonth() + 1;
-            const year = date.getFullYear();
-            const hour = date.getHours();
-            const minute = date.getMinutes();
+            let year = date.getFullYear();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let seconds = date.getSeconds();
 
             if (day < 10) day = "0" + day;
             if (month < 10) month = "0" + month;
+            if (minute = '0') minute = "0" + minute;
+            if (seconds = '0') seconds = "0" + seconds;
 
-            return `${day}/${month}/${year} - ${hour}:${minute}`;
+            return `${day}/${month}/${year} ${hour}:${minute}:${seconds}`;
         }
     },
 }

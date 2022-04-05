@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Category;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('updated_at', 'desc')->with('author', 'category', 'tags')->limit(5)->get();
-        return response()->json($posts);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -27,7 +36,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(){[
+            'label' => 'nullable',
+        ]}
     }
 
     /**
@@ -37,6 +48,17 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }

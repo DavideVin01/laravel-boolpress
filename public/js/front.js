@@ -2307,9 +2307,12 @@ __webpack_require__.r(__webpack_exports__);
       var year = date.getFullYear();
       var hour = date.getHours();
       var minute = date.getMinutes();
+      var seconds = date.getSeconds();
       if (day < 10) day = "0" + day;
       if (month < 10) month = "0" + month;
-      return "".concat(day, "/").concat(month, "/").concat(year, " - ").concat(hour, ":").concat(minute);
+      if (minute = '0') minute = "0" + minute;
+      if (seconds = '0') seconds = "0" + seconds;
+      return "".concat(day, "/").concat(month, "/").concat(year, " ").concat(hour, ":").concat(minute, ":").concat(seconds);
     }
   }
 });
