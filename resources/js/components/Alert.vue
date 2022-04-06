@@ -1,6 +1,6 @@
 <template>
   <div :class="`alert alert-${type || 'info'}`" role="alert">
-    <div class="d-flex justify-content-between align-items-center">
+    <div>
       <slot></slot>
     </div>
   </div>

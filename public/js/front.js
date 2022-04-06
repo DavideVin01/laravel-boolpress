@@ -39642,14 +39642,7 @@ var render = function () {
   return _c(
     "div",
     { class: "alert alert-" + (_vm.type || "info"), attrs: { role: "alert" } },
-    [
-      _c(
-        "div",
-        { staticClass: "d-flex justify-content-between align-items-center" },
-        [_vm._t("default")],
-        2
-      ),
-    ]
+    [_c("div", [_vm._t("default")], 2)]
   )
 }
 var staticRenderFns = []

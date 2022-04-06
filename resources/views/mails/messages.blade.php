@@ -1,7 +1,7 @@
 @component('mail::message')
     # Nuovo Messaggio
 
-    <p>Email: {{ $contact['email'] }}</p>
+    Email: {{ $contact['email'] }}
 
-    <p>Message:: {{ $contact['message'] }}</p>
+    Message:: {{ $contact['message'] }}
 @endcomponent
