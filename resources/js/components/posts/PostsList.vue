@@ -3,9 +3,8 @@
     <h1>Post</h1>
     <Alert
       type="danger"
-      v-if="(isError && !isLoading) || !post || !posts"
+      v-if="isError && !isLoading"
       @on-close="isError = false"
-      dismissable="true"
     />
     <div class="my-3 d-flex justify-content-center">
       <Pagination

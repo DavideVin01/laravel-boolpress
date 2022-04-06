@@ -2183,16 +2183,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Alert",
-  props: ["dismissable", "message", "type"]
+  props: ["message", "type"]
 });
 
 /***/ }),
@@ -2802,7 +2795,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Alert_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Alert.vue */ "./resources/js/components/Alert.vue");
 /* harmony import */ var _Pagination_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Pagination.vue */ "./resources/js/components/Pagination.vue");
 /* harmony import */ var _PostCard_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PostCard.vue */ "./resources/js/components/posts/PostCard.vue");
-//
 //
 //
 //
@@ -39654,25 +39646,8 @@ var render = function () {
       _c(
         "div",
         { staticClass: "d-flex justify-content-between align-items-center" },
-        [
-          _c("div", [_vm._v(_vm._s(_vm.message))]),
-          _vm._v(" "),
-          _vm.dismissable
-            ? _c(
-                "span",
-                {
-                  staticClass: "h4 m-0",
-                  attrs: { role: "button" },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$emit("on-close")
-                    },
-                  },
-                },
-                [_vm._v("×")]
-              )
-            : _vm._e(),
-        ]
+        [_vm._t("default")],
+        2
       ),
     ]
   )
@@ -40515,9 +40490,9 @@ var render = function () {
     [
       _c("h1", [_vm._v("Post")]),
       _vm._v(" "),
-      (_vm.isError && !_vm.isLoading) || !_vm.post || !_vm.posts
+      _vm.isError && !_vm.isLoading
         ? _c("Alert", {
-            attrs: { type: "danger", dismissable: "true" },
+            attrs: { type: "danger" },
             on: {
               "on-close": function ($event) {
                 _vm.isError = false
