@@ -15,9 +15,9 @@
     </div>
     <Loader v-if="isLoading" />
     <div v-else>
-      <div v-if="posts.length">
-        <div v-for="post in posts" :key="post.id">
-          <PostCard :post="post" />
+      <div v-if="posts.length" class="row">
+        <div v-for="post in posts" :key="post.id" class="col-6">
+          <PostCard :post="post" short-content="true" />
         </div>
       </div>
       <p v-else>Non ci sono post.</p>

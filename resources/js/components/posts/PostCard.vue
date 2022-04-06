@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card my-5 d-flex">
     <div class="card-header d-flex justify-content-between">
       <h5>{{ post.author.name }} - {{ updatedAt }}</h5>
       <router-link
@@ -11,8 +11,10 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
-      <div>
-        <img v-if="showImage && post.image" :src="post.image" alt="Image" />
+      <div v-if="shortContent">
+        <p class="card-text content-overflow">{{ post.content }}</p>
+      </div>
+      <div v-else>
         <p class="card-text">{{ post.content }}</p>
       </div>
     </div>
@@ -46,7 +48,7 @@
 <script>
 export default {
   name: "PostCard",
-  props: ["post", "hide-link", "show-image"],
+  props: ["post", "hide-link", "show-image", "short-content"],
   computed: {
     updatedAt() {
       let date = new Date(this.post.updated_at);
@@ -69,4 +71,12 @@ export default {
 </script>
 
 <style>
+.content-overflow {
+  display: block;
+  height: 50px;
+  /* width: 100%; */
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+}
 </style>
