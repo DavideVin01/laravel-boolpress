@@ -64,7 +64,7 @@ class PostController extends Controller
 
         $post = new Post();
 
-        if (array_key_exists('image', $data)){
+        if (array_key_exists('image', $data)) {
             $img_url = Storage::put('post_images', $data['image']);
             $data['image'] = $img_url;
         }
@@ -103,7 +103,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::orderBy('label', 'ASC')->get();
-        
+
         $post_tags_ids = $post->tags->pluck('id')->toArray();
 
         $categories = Category::all();
@@ -130,8 +130,8 @@ class PostController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($request->title, '-');
 
-        if (array_key_exists('image', $data)){
-            if($post->image) Storage::delete($post->image);
+        if (array_key_exists('image', $data)) {
+            if ($post->image) Storage::delete($post->image);
 
             $img_url = Storage::put('post_images', $data['image']);
             $data['image'] = $img_url;
@@ -155,7 +155,7 @@ class PostController extends Controller
     {
         if (count($post->tags)) $post->tags()->detach();
 
-        if($post->image) Storage::delete($post->image);
+        if ($post->image) Storage::delete($post->image);
 
         $post->delete();
 

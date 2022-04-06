@@ -1,18 +1,69 @@
 <template>
   <section id="contacts">
-    <h1>Contacts</h1>
-    <div class="card">
+    <section id="form">
+      <h1>Contattaci</h1>
+      <div class="row d-flex">
+        <div class="col-8">
+          <div class="form-group">
+            <div>
+              <label for="message">Inserisci qui il tuo messaggio: </label>
+            </div>
+            <div>
+              <textarea
+                class="form-control shadow"
+                id="message"
+                rows="5"
+              ></textarea>
+              <small class="form-text text-muted"
+                >Inserisci qui il tuo messaggio.</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <div>
+              <label for="email" class="mb-3 mr-3"
+                >Inserisci la tua email:</label
+              >
+            </div>
+            <div>
+              <input
+                type="email"
+                class="form-control shadow"
+                id="email"
+                placeholder="nome@esempio.com"
+              />
+              <small class="form-text text-muted"
+                >Inserisci qui la tua email. Non condivideremo la tua email con
+                nessuno. Verrà utilizzata per ricontattarti.</small
+              >
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-success w-100 shadow">Invia</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <div class="card mt-5 shadow">
       <div
         class="
           card-header
           d-flex
           justify-content-between
           align-items-center
-          py-5
+          py-3
         "
       >
-        <div class="h4">
-          Nome Azienda: <strong>{{ title }}</strong>
+        <div class="h4 pt-3">
+          <div>Nome Azienda:</div>
+          <div>
+            <strong>{{ title }}</strong>
+          </div>
         </div>
         <div>
           <img

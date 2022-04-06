@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>Posts</h1>
+    <h1>Post</h1>
     <div class="my-3 d-flex justify-content-center">
       <Pagination
         :pagination="pagination"
