@@ -2369,6 +2369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
 //
 //
 //
@@ -2475,12 +2476,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ContactPage",
+  components: {
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      title: "Boolpress"
+      title: "Boolpress",
+      errors: {},
+      isLoading: false,
+      alertMessage: "",
+      form: {
+        email: "",
+        message: ""
+      }
     };
+  },
+  methods: {
+    sendForm: function sendForm() {
+      var _this = this;
+
+      //#validation
+      var errors = {};
+      if (!this.form.email.trim()) errors.email = "L'email è obbligatoria";
+      if (!this.form.message.trim()) errors.message = "Il testo del messaggio è obbligatorio"; // controllo che sia una Mail valida
+
+      if (this.form.email.trim() && !this.form.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)) errors.email = "La mail non è valida.";
+      this.errors = errors;
+      this.isLoading = true;
+      axios.post("http://localhost:8000/api/messages", this.form).then(function (res) {
+        _this.form.email = "";
+        _this.form.message = "";
+        _this.alertMessage = "Messaggio inviato con successo";
+      })["catch"](function (err) {
+        console.error(err.response.status);
+        _this.errors = {
+          error: "Si è verificato un errore"
+        };
+      }).then(function () {
+        _this.isLoading = false;
+      });
+    }
   }
 });
 
@@ -39796,11 +39838,39 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { attrs: { id: "contacts" } }, [
-    _vm._m(0),
+    _c(
+      "section",
+      { attrs: { id: "form" } },
+      [
+        _c("h1", [_vm._v("Contattaci")]),
+        _vm._v(" "),
+        _vm.isLoading ? _c("Loader") : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "row d-flex" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex justify-content-end" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success w-100 shadow-sm",
+                  on: { click: _vm.sendForm },
+                },
+                [_vm._v("\n            Invia\n          ")]
+              ),
+            ]),
+          ]),
+        ]),
+      ],
+      1
+    ),
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
-    _c("div", { staticClass: "card mt-5 shadow" }, [
+    _c("div", { staticClass: "card mt-5 shadow-sm" }, [
       _c(
         "div",
         {
@@ -39814,11 +39884,11 @@ var render = function () {
             _c("div", [_c("strong", [_vm._v(_vm._s(_vm.title))])]),
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(2),
         ]
       ),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(3),
     ]),
   ])
 }
@@ -39827,64 +39897,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "form" } }, [
-      _c("h1", [_vm._v("Contattaci")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row d-flex" }, [
-        _c("div", { staticClass: "col-8" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", [
-              _c("label", { attrs: { for: "message" } }, [
-                _vm._v("Inserisci qui il tuo messaggio: "),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("textarea", {
-                staticClass: "form-control shadow",
-                attrs: { id: "message", rows: "5" },
-              }),
-              _vm._v(" "),
-              _c("small", { staticClass: "form-text text-muted" }, [
-                _vm._v("Inserisci qui il tuo messaggio."),
-              ]),
-            ]),
+    return _c("div", { staticClass: "col-8" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", [
+          _c("label", { attrs: { for: "message" } }, [
+            _vm._v("Inserisci qui il tuo messaggio: "),
           ]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", [
-              _c(
-                "label",
-                { staticClass: "mb-3 mr-3", attrs: { for: "email" } },
-                [_vm._v("Inserisci la tua email:")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("input", {
-                staticClass: "form-control shadow",
-                attrs: {
-                  type: "email",
-                  id: "email",
-                  placeholder: "nome@esempio.com",
-                },
-              }),
-              _vm._v(" "),
-              _c("small", { staticClass: "form-text text-muted" }, [
-                _vm._v(
-                  "Inserisci qui la tua email. Non condivideremo la tua email con\n              nessuno. Verrà utilizzata per ricontattarti."
-                ),
-              ]),
-            ]),
-          ]),
+        _c("div", [
+          _c("textarea", {
+            staticClass: "form-control shadow-sm",
+            attrs: { id: "message", rows: "5" },
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "d-flex justify-content-end" }, [
-            _c("button", { staticClass: "btn btn-success w-100 shadow" }, [
-              _vm._v("Invia"),
-            ]),
+          _c("small", { staticClass: "form-text text-muted" }, [
+            _vm._v(
+              "Scrivi il testo del tuo messaggio. Un amministratore ti\n              risponderà appena possibile."
+            ),
           ]),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", [
+        _c("label", { staticClass: "mb-3 mr-3", attrs: { for: "email" } }, [
+          _vm._v("Inserisci la tua email:"),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("input", {
+          staticClass: "form-control shadow-sm",
+          attrs: {
+            type: "email",
+            id: "email",
+            placeholder: "nome@esempio.com",
+          },
+        }),
+        _vm._v(" "),
+        _c("small", { staticClass: "form-text text-muted" }, [
+          _vm._v(
+            "Inserisci qui la tua email. Non condivideremo la tua email con\n              nessuno. Verrà utilizzata per ricontattarti."
+          ),
         ]),
       ]),
     ])

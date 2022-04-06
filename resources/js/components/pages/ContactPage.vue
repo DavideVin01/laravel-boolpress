@@ -2,6 +2,7 @@
   <section id="contacts">
     <section id="form">
       <h1>Contattaci</h1>
+      <Loader v-if="isLoading" />
       <div class="row d-flex">
         <div class="col-8">
           <div class="form-group">
@@ -10,12 +11,13 @@
             </div>
             <div>
               <textarea
-                class="form-control shadow"
+                class="form-control shadow-sm"
                 id="message"
                 rows="5"
               ></textarea>
               <small class="form-text text-muted"
-                >Inserisci qui il tuo messaggio.</small
+                >Scrivi il testo del tuo messaggio. Un amministratore ti
+                risponderà appena possibile.</small
               >
             </div>
           </div>
@@ -30,7 +32,7 @@
             <div>
               <input
                 type="email"
-                class="form-control shadow"
+                class="form-control shadow-sm"
                 id="email"
                 placeholder="nome@esempio.com"
               />
@@ -41,7 +43,9 @@
             </div>
           </div>
           <div class="d-flex justify-content-end">
-            <button class="btn btn-success w-100 shadow">Invia</button>
+            <button class="btn btn-success w-100 shadow-sm" @click="sendForm">
+              Invia
+            </button>
           </div>
         </div>
       </div>
@@ -49,7 +53,7 @@
 
     <hr />
 
-    <div class="card mt-5 shadow">
+    <div class="card mt-5 shadow-sm">
       <div
         class="
           card-header
@@ -105,15 +109,59 @@
 </template>
 
 <script>
+import Loader from "../Loader.vue";
 export default {
   name: "ContactPage",
+  components: {
+    Loader,
+  },
   data() {
     return {
       title: "Boolpress",
+      errors: {},
+      isLoading: false,
+      alertMessage: "",
+      form: {
+        email: "",
+        message: "",
+      },
     };
   },
+  methods: {
+    sendForm() {
+      //#validation
+      const errors = {};
+      if (!this.form.email.trim()) errors.email = "L'email è obbligatoria";
+      if (!this.form.message.trim())
+        errors.message = "Il testo del messaggio è obbligatorio";
+
+      // controllo che sia una Mail valida
+      if (
+        this.form.email.trim() &&
+        !this.form.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+      )
+        errors.email = "La mail non è valida.";
+      this.errors = errors;
+
+      this.isLoading = true;
+      axios
+        .post("http://localhost:8000/api/messages", this.form)
+        .then((res) => {
+          this.form.email = "";
+          this.form.message = "";
+          this.alertMessage = "Messaggio inviato con successo";
+        })
+        .catch((err) => {
+          console.error(err.response.status);
+          this.errors = { error: "Si è verificato un errore" };
+        })
+        .then(() => {
+          this.isLoading = false;
+        });
+    },
+  },
 };
-</script>
+</script>*/
 
 <style>
 </style>

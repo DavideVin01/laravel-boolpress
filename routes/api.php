@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function () {
     Route::get('/posts', 'PostController@index');
     Route::get('/posts/{slug}', 'PostController@show');
-    Route::post('messages', 'ContactMessageController@send');
+    Route::post('messages', 'ContactMessageController@store');
 });

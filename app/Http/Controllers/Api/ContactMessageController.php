@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactMessageController extends Controller
 {
-    public function send(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
