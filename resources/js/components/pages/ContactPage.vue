@@ -2,6 +2,15 @@
   <section id="contacts">
     <section id="form">
       <h1>Contattaci</h1>
+      <Alert
+        v-if="hasErrors || alertMessage"
+        :type="hasErrors ? 'danger' : 'success'"
+      >
+        <div v-if="alertMessage">{{ alertMessage }}</div>
+        <ul v-if="hasErrors">
+          <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
+        </ul>
+      </Alert>
       <Loader v-if="isLoading" />
       <div class="row d-flex">
         <div class="col-8">
@@ -11,6 +20,7 @@
             </div>
             <div>
               <textarea
+                v-model.trim="form.message"
                 class="form-control shadow-sm"
                 id="message"
                 rows="5"
@@ -31,6 +41,7 @@
             </div>
             <div>
               <input
+                v-model.trim="form.email"
                 type="email"
                 class="form-control shadow-sm"
                 id="email"
@@ -43,7 +54,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-end">
-            <button class="btn btn-success w-100 shadow-sm" @click="sendForm">
+            <button class="btn btn-success w-100 shadow-sm" @click="sendForm()">
               Invia
             </button>
           </div>
@@ -110,10 +121,13 @@
 
 <script>
 import Loader from "../Loader.vue";
+import Alert from "../Alert.vue";
+import { isEmpty } from "lodash";
 export default {
   name: "ContactPage",
   components: {
     Loader,
+    Alert,
   },
   data() {
     return {
@@ -127,9 +141,14 @@ export default {
       },
     };
   },
+  computed: {
+    hasErrors() {
+      return !isEmpty(this.errors);
+    },
+  },
   methods: {
-    sendForm() {
-      //#validation
+    validateForm() {
+      // #validation
       const errors = {};
       if (!this.form.email.trim()) errors.email = "L'email è obbligatoria";
       if (!this.form.message.trim())
@@ -142,22 +161,37 @@ export default {
       )
         errors.email = "La mail non è valida.";
       this.errors = errors;
+    },
+    sendForm() {
+      // Valido i campi
+      this.validateForm();
 
-      this.isLoading = true;
-      axios
-        .post("http://localhost:8000/api/messages", this.form)
-        .then((res) => {
-          this.form.email = "";
-          this.form.message = "";
-          this.alertMessage = "Messaggio inviato con successo";
-        })
-        .catch((err) => {
-          console.error(err.response.status);
-          this.errors = { error: "Si è verificato un errore" };
-        })
-        .then(() => {
-          this.isLoading = false;
-        });
+      // Invio il form solo se non ci sono errori
+      if (!this.hasErrors) {
+        this.isLoading = true;
+        axios
+          .post("http://localhost:8000/api/messages", this.form)
+          .then((res) => {
+            if (res.data.errors) {
+              const { email, message } = res.data.errors;
+              const errors = {};
+              if (email) errors.email = email[0];
+              if (message) errors.message = message[0];
+              this.errors = errors;
+            } else {
+              this.form.email = "";
+              this.form.message = "";
+              this.alertMessage = "Messaggio inviato con successo";
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            this.errors = { error: "Si è verificato un errore" };
+          })
+          .then(() => {
+            this.isLoading = false;
+          });
+      }
     },
   },
 };

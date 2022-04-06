@@ -1,6 +1,12 @@
 <template>
   <section>
     <h1>Post</h1>
+    <Alert
+      type="danger"
+      v-if="(isError && !isLoading) || !post || !posts"
+      @on-close="isError = false"
+      dismissable="true"
+    />
     <div class="my-3 d-flex justify-content-center">
       <Pagination
         :pagination="pagination"
@@ -29,6 +35,7 @@
 
 <script>
 import Loader from "../Loader.vue";
+import Alert from "../Alert.vue";
 import Pagination from "../Pagination.vue";
 import PostCard from "./PostCard.vue";
 export default {
@@ -37,11 +44,13 @@ export default {
     Loader,
     PostCard,
     Pagination,
+    Alert,
   },
   data() {
     return {
       posts: [],
       pagination: {},
+      isError: false,
       isLoading: false,
     };
   },
@@ -61,6 +70,7 @@ export default {
         })
         .catch((err) => {
           console.error(err);
+          this.isError = true;
         })
         .then(() => {
           console.log("Chiamata terminata");
